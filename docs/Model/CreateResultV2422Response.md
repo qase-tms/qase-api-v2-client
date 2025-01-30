@@ -1,0 +1,10 @@
+# # CreateResultV2422Response
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**errorMessage** | **string** |  | [optional]
+**errorFields** | [**\Qase\APIClientV2\Model\BaseErrorFieldResponseErrorFieldsInner[]**](BaseErrorFieldResponseErrorFieldsInner.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
