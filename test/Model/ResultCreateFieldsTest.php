@@ -178,4 +178,13 @@ class ResultCreateFieldsTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "executedBy"
+     */
+    public function testPropertyExecutedBy()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }
