@@ -68,7 +68,8 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'behavior' => 'string',
         'type' => 'string',
         'muted' => 'string',
-        'isFlaky' => 'string'
+        'isFlaky' => 'string',
+        'executedBy' => 'string'
     ];
 
     /**
@@ -89,7 +90,8 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'behavior' => null,
         'type' => null,
         'muted' => null,
-        'isFlaky' => null
+        'isFlaky' => null,
+        'executedBy' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'behavior' => false,
         'type' => false,
         'muted' => false,
-        'isFlaky' => false
+        'isFlaky' => false,
+        'executedBy' => false
     ];
 
     /**
@@ -207,7 +210,8 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'behavior' => 'behavior',
         'type' => 'type',
         'muted' => 'muted',
-        'isFlaky' => 'is_flaky'
+        'isFlaky' => 'is_flaky',
+        'executedBy' => 'executed_by'
     ];
 
     /**
@@ -226,7 +230,8 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'behavior' => 'setBehavior',
         'type' => 'setType',
         'muted' => 'setMuted',
-        'isFlaky' => 'setIsFlaky'
+        'isFlaky' => 'setIsFlaky',
+        'executedBy' => 'setExecutedBy'
     ];
 
     /**
@@ -245,7 +250,8 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'behavior' => 'getBehavior',
         'type' => 'getType',
         'muted' => 'getMuted',
-        'isFlaky' => 'getIsFlaky'
+        'isFlaky' => 'getIsFlaky',
+        'executedBy' => 'getExecutedBy'
     ];
 
     /**
@@ -303,7 +309,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(?array $data = null)
+    public function __construct(array $data = null)
     {
         $this->setIfExists('author', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
@@ -316,6 +322,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('muted', $data ?? [], null);
         $this->setIfExists('isFlaky', $data ?? [], null);
+        $this->setIfExists('executedBy', $data ?? [], null);
     }
 
     /**
@@ -373,7 +380,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets author
      *
-     * @param string|null $author author
+     * @param string|null $author Author of the related test case (member id, name or email). If set and test case auto-creation is enabled, the author will be used to create the test case
      *
      * @return self
      */
@@ -653,6 +660,33 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable isFlaky cannot be null');
         }
         $this->container['isFlaky'] = $isFlaky;
+
+        return $this;
+    }
+
+    /**
+     * Gets executedBy
+     *
+     * @return string|null
+     */
+    public function getExecutedBy()
+    {
+        return $this->container['executedBy'];
+    }
+
+    /**
+     * Sets executedBy
+     *
+     * @param string|null $executedBy User who executed the test (member id, name or email)
+     *
+     * @return self
+     */
+    public function setExecutedBy($executedBy)
+    {
+        if (is_null($executedBy)) {
+            throw new \InvalidArgumentException('non-nullable executedBy cannot be null');
+        }
+        $this->container['executedBy'] = $executedBy;
 
         return $this;
     }
