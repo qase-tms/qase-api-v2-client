@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **execution** | [**\Qase\APIClientV2\Model\ResultExecution**](ResultExecution.md) |  |
 **id** | **string** | If passed, used as an idempotency key | [optional]
 **signature** | **string** |  | [optional]
-**testopsId** | **int** |  | [optional]
+**testopsId** | **int** | ID of the test case. Cannot be specified together with testopd_ids. | [optional]
+**testopsIds** | **int[]** | IDs of the test cases. Cannot be specified together with testopd_id. | [optional]
 **fields** | [**\Qase\APIClientV2\Model\ResultCreateFields**](ResultCreateFields.md) |  | [optional]
 **attachments** | **string[]** |  | [optional]
 **steps** | [**\Qase\APIClientV2\Model\ResultStep[]**](ResultStep.md) |  | [optional]

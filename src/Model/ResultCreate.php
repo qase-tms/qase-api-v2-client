@@ -63,6 +63,7 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'signature' => 'string',
         'testopsId' => 'int',
+        'testopsIds' => 'int[]',
         'fields' => '\Qase\APIClientV2\Model\ResultCreateFields',
         'attachments' => 'string[]',
         'steps' => '\Qase\APIClientV2\Model\ResultStep[]',
@@ -87,6 +88,7 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'signature' => null,
         'testopsId' => 'int64',
+        'testopsIds' => 'int64',
         'fields' => null,
         'attachments' => null,
         'steps' => null,
@@ -109,6 +111,7 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'signature' => false,
         'testopsId' => true,
+        'testopsIds' => true,
         'fields' => false,
         'attachments' => false,
         'steps' => false,
@@ -211,6 +214,7 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'signature' => 'signature',
         'testopsId' => 'testops_id',
+        'testopsIds' => 'testops_ids',
         'fields' => 'fields',
         'attachments' => 'attachments',
         'steps' => 'steps',
@@ -233,6 +237,7 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'signature' => 'setSignature',
         'testopsId' => 'setTestopsId',
+        'testopsIds' => 'setTestopsIds',
         'fields' => 'setFields',
         'attachments' => 'setAttachments',
         'steps' => 'setSteps',
@@ -255,6 +260,7 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'signature' => 'getSignature',
         'testopsId' => 'getTestopsId',
+        'testopsIds' => 'getTestopsIds',
         'fields' => 'getFields',
         'attachments' => 'getAttachments',
         'steps' => 'getSteps',
@@ -321,13 +327,14 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(?array $data = null)
+    public function __construct(array $data = null)
     {
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('execution', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('signature', $data ?? [], null);
         $this->setIfExists('testopsId', $data ?? [], null);
+        $this->setIfExists('testopsIds', $data ?? [], null);
         $this->setIfExists('fields', $data ?? [], null);
         $this->setIfExists('attachments', $data ?? [], null);
         $this->setIfExists('steps', $data ?? [], null);
@@ -508,7 +515,7 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets testopsId
      *
-     * @param int|null $testopsId testopsId
+     * @param int|null $testopsId ID of the test case. Cannot be specified together with testopd_ids.
      *
      * @return self
      */
@@ -525,6 +532,40 @@ class ResultCreate implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['testopsId'] = $testopsId;
+
+        return $this;
+    }
+
+    /**
+     * Gets testopsIds
+     *
+     * @return int[]|null
+     */
+    public function getTestopsIds()
+    {
+        return $this->container['testopsIds'];
+    }
+
+    /**
+     * Sets testopsIds
+     *
+     * @param int[]|null $testopsIds IDs of the test cases. Cannot be specified together with testopd_id.
+     *
+     * @return self
+     */
+    public function setTestopsIds($testopsIds)
+    {
+        if (is_null($testopsIds)) {
+            array_push($this->openAPINullablesSetToNull, 'testopsIds');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('testopsIds', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['testopsIds'] = $testopsIds;
 
         return $this;
     }
