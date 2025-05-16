@@ -51,6 +51,8 @@ class ResultStepStatus
 
     public const SKIPPED = 'skipped';
 
+    public const IN_PROGRESS = 'in_progress';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -61,7 +63,8 @@ class ResultStepStatus
             self::PASSED,
             self::FAILED,
             self::BLOCKED,
-            self::SKIPPED
+            self::SKIPPED,
+            self::IN_PROGRESS
         ];
     }
 }
