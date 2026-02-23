@@ -1,6 +1,6 @@
 <?php
 /**
- * ResultsApi
+ * CustomFieldsApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use Qase\APIClientV2\HeaderSelector;
 use Qase\APIClientV2\ObjectSerializer;
 
 /**
- * ResultsApi Class Doc Comment
+ * CustomFieldsApi Class Doc Comment
  *
  * @category Class
  * @package  Qase\APIClientV2
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ResultsApi
+class CustomFieldsApi
 {
     /**
      * @var ClientInterface
@@ -75,10 +75,10 @@ class ResultsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createResultV2' => [
+        'getCustomFieldV2' => [
             'application/json',
         ],
-        'createResultsV2' => [
+        'getCustomFieldsV2' => [
             'application/json',
         ],
     ];
@@ -130,42 +130,38 @@ class ResultsApi
     }
 
     /**
-     * Operation createResultV2
+     * Operation getCustomFieldV2
      *
-     * Create test run result
+     * Get Custom Field
      *
-     * @param  string $projectCode projectCode (required)
-     * @param  int $runId runId (required)
-     * @param  \Qase\APIClientV2\Model\ResultCreate $resultCreate resultCreate (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultV2'] to see the possible values for this operation
+     * @param  int $id Identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldV2'] to see the possible values for this operation
      *
      * @throws \Qase\APIClientV2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Qase\APIClientV2\Model\ResultCreateResponse
+     * @return \Qase\APIClientV2\Model\CustomFieldResponse
      */
-    public function createResultV2($projectCode, $runId, $resultCreate, string $contentType = self::contentTypes['createResultV2'][0])
+    public function getCustomFieldV2($id, string $contentType = self::contentTypes['getCustomFieldV2'][0])
     {
-        list($response) = $this->createResultV2WithHttpInfo($projectCode, $runId, $resultCreate, $contentType);
+        list($response) = $this->getCustomFieldV2WithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation createResultV2WithHttpInfo
+     * Operation getCustomFieldV2WithHttpInfo
      *
-     * Create test run result
+     * Get Custom Field
      *
-     * @param  string $projectCode (required)
-     * @param  int $runId (required)
-     * @param  \Qase\APIClientV2\Model\ResultCreate $resultCreate (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultV2'] to see the possible values for this operation
+     * @param  int $id Identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldV2'] to see the possible values for this operation
      *
      * @throws \Qase\APIClientV2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Qase\APIClientV2\Model\ResultCreateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Qase\APIClientV2\Model\CustomFieldResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createResultV2WithHttpInfo($projectCode, $runId, $resultCreate, string $contentType = self::contentTypes['createResultV2'][0])
+    public function getCustomFieldV2WithHttpInfo($id, string $contentType = self::contentTypes['getCustomFieldV2'][0])
     {
-        $request = $this->createResultV2Request($projectCode, $runId, $resultCreate, $contentType);
+        $request = $this->getCustomFieldV2Request($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -191,9 +187,9 @@ class ResultsApi
 
 
             switch($statusCode) {
-                case 202:
+                case 200:
                     return $this->handleResponseWithDataType(
-                        '\Qase\APIClientV2\Model\ResultCreateResponse',
+                        '\Qase\APIClientV2\Model\CustomFieldResponse',
                         $request,
                         $response,
                     );
@@ -215,16 +211,16 @@ class ResultsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Qase\APIClientV2\Model\ResultCreateResponse',
+                '\Qase\APIClientV2\Model\CustomFieldResponse',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
+                case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Qase\APIClientV2\Model\ResultCreateResponse',
+                        '\Qase\APIClientV2\Model\CustomFieldResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -237,21 +233,19 @@ class ResultsApi
     }
 
     /**
-     * Operation createResultV2Async
+     * Operation getCustomFieldV2Async
      *
-     * Create test run result
+     * Get Custom Field
      *
-     * @param  string $projectCode (required)
-     * @param  int $runId (required)
-     * @param  \Qase\APIClientV2\Model\ResultCreate $resultCreate (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultV2'] to see the possible values for this operation
+     * @param  int $id Identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createResultV2Async($projectCode, $runId, $resultCreate, string $contentType = self::contentTypes['createResultV2'][0])
+    public function getCustomFieldV2Async($id, string $contentType = self::contentTypes['getCustomFieldV2'][0])
     {
-        return $this->createResultV2AsyncWithHttpInfo($projectCode, $runId, $resultCreate, $contentType)
+        return $this->getCustomFieldV2AsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -260,22 +254,20 @@ class ResultsApi
     }
 
     /**
-     * Operation createResultV2AsyncWithHttpInfo
+     * Operation getCustomFieldV2AsyncWithHttpInfo
      *
-     * Create test run result
+     * Get Custom Field
      *
-     * @param  string $projectCode (required)
-     * @param  int $runId (required)
-     * @param  \Qase\APIClientV2\Model\ResultCreate $resultCreate (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultV2'] to see the possible values for this operation
+     * @param  int $id Identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createResultV2AsyncWithHttpInfo($projectCode, $runId, $resultCreate, string $contentType = self::contentTypes['createResultV2'][0])
+    public function getCustomFieldV2AsyncWithHttpInfo($id, string $contentType = self::contentTypes['getCustomFieldV2'][0])
     {
-        $returnType = '\Qase\APIClientV2\Model\ResultCreateResponse';
-        $request = $this->createResultV2Request($projectCode, $runId, $resultCreate, $contentType);
+        $returnType = '\Qase\APIClientV2\Model\CustomFieldResponse';
+        $request = $this->getCustomFieldV2Request($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -314,42 +306,26 @@ class ResultsApi
     }
 
     /**
-     * Create request for operation 'createResultV2'
+     * Create request for operation 'getCustomFieldV2'
      *
-     * @param  string $projectCode (required)
-     * @param  int $runId (required)
-     * @param  \Qase\APIClientV2\Model\ResultCreate $resultCreate (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultV2'] to see the possible values for this operation
+     * @param  int $id Identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createResultV2Request($projectCode, $runId, $resultCreate, string $contentType = self::contentTypes['createResultV2'][0])
+    public function getCustomFieldV2Request($id, string $contentType = self::contentTypes['getCustomFieldV2'][0])
     {
 
-        // verify the required parameter 'projectCode' is set
-        if ($projectCode === null || (is_array($projectCode) && count($projectCode) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $projectCode when calling createResultV2'
-            );
-        }
-
-        // verify the required parameter 'runId' is set
-        if ($runId === null || (is_array($runId) && count($runId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $runId when calling createResultV2'
-            );
-        }
-
-        // verify the required parameter 'resultCreate' is set
-        if ($resultCreate === null || (is_array($resultCreate) && count($resultCreate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $resultCreate when calling createResultV2'
+                'Missing the required parameter $id when calling getCustomFieldV2'
             );
         }
 
 
-        $resourcePath = '/{project_code}/run/{run_id}/result';
+        $resourcePath = '/custom_field/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -359,18 +335,10 @@ class ResultsApi
 
 
         // path params
-        if ($projectCode !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'project_code' . '}',
-                ObjectSerializer::toPathValue($projectCode),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($runId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'run_id' . '}',
-                ObjectSerializer::toPathValue($runId),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }
@@ -383,14 +351,7 @@ class ResultsApi
         );
 
         // for model (json/xml)
-        if (isset($resultCreate)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($resultCreate));
-            } else {
-                $httpBody = $resultCreate;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -434,7 +395,7 @@ class ResultsApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -442,42 +403,44 @@ class ResultsApi
     }
 
     /**
-     * Operation createResultsV2
+     * Operation getCustomFieldsV2
      *
-     * Bulk create test run result
+     * Get all Custom Fields
      *
-     * @param  string $projectCode projectCode (required)
-     * @param  int $runId runId (required)
-     * @param  \Qase\APIClientV2\Model\CreateResultsRequestV2 $createResultsRequestV2 createResultsRequestV2 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultsV2'] to see the possible values for this operation
+     * @param  string|null $entity entity (optional)
+     * @param  string|null $type type (optional)
+     * @param  int|null $limit A number of entities in result set. (optional, default to 10)
+     * @param  int|null $offset How many entities should be skipped. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldsV2'] to see the possible values for this operation
      *
      * @throws \Qase\APIClientV2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Qase\APIClientV2\Model\ResultCreateBulkResponse
+     * @return \Qase\APIClientV2\Model\CustomFieldListResponse
      */
-    public function createResultsV2($projectCode, $runId, $createResultsRequestV2, string $contentType = self::contentTypes['createResultsV2'][0])
+    public function getCustomFieldsV2($entity = null, $type = null, $limit = 10, $offset = 0, string $contentType = self::contentTypes['getCustomFieldsV2'][0])
     {
-        list($response) = $this->createResultsV2WithHttpInfo($projectCode, $runId, $createResultsRequestV2, $contentType);
+        list($response) = $this->getCustomFieldsV2WithHttpInfo($entity, $type, $limit, $offset, $contentType);
         return $response;
     }
 
     /**
-     * Operation createResultsV2WithHttpInfo
+     * Operation getCustomFieldsV2WithHttpInfo
      *
-     * Bulk create test run result
+     * Get all Custom Fields
      *
-     * @param  string $projectCode (required)
-     * @param  int $runId (required)
-     * @param  \Qase\APIClientV2\Model\CreateResultsRequestV2 $createResultsRequestV2 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultsV2'] to see the possible values for this operation
+     * @param  string|null $entity (optional)
+     * @param  string|null $type (optional)
+     * @param  int|null $limit A number of entities in result set. (optional, default to 10)
+     * @param  int|null $offset How many entities should be skipped. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldsV2'] to see the possible values for this operation
      *
      * @throws \Qase\APIClientV2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Qase\APIClientV2\Model\ResultCreateBulkResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Qase\APIClientV2\Model\CustomFieldListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createResultsV2WithHttpInfo($projectCode, $runId, $createResultsRequestV2, string $contentType = self::contentTypes['createResultsV2'][0])
+    public function getCustomFieldsV2WithHttpInfo($entity = null, $type = null, $limit = 10, $offset = 0, string $contentType = self::contentTypes['getCustomFieldsV2'][0])
     {
-        $request = $this->createResultsV2Request($projectCode, $runId, $createResultsRequestV2, $contentType);
+        $request = $this->getCustomFieldsV2Request($entity, $type, $limit, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -503,9 +466,9 @@ class ResultsApi
 
 
             switch($statusCode) {
-                case 202:
+                case 200:
                     return $this->handleResponseWithDataType(
-                        '\Qase\APIClientV2\Model\ResultCreateBulkResponse',
+                        '\Qase\APIClientV2\Model\CustomFieldListResponse',
                         $request,
                         $response,
                     );
@@ -527,16 +490,16 @@ class ResultsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Qase\APIClientV2\Model\ResultCreateBulkResponse',
+                '\Qase\APIClientV2\Model\CustomFieldListResponse',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
+                case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Qase\APIClientV2\Model\ResultCreateBulkResponse',
+                        '\Qase\APIClientV2\Model\CustomFieldListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -549,21 +512,22 @@ class ResultsApi
     }
 
     /**
-     * Operation createResultsV2Async
+     * Operation getCustomFieldsV2Async
      *
-     * Bulk create test run result
+     * Get all Custom Fields
      *
-     * @param  string $projectCode (required)
-     * @param  int $runId (required)
-     * @param  \Qase\APIClientV2\Model\CreateResultsRequestV2 $createResultsRequestV2 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultsV2'] to see the possible values for this operation
+     * @param  string|null $entity (optional)
+     * @param  string|null $type (optional)
+     * @param  int|null $limit A number of entities in result set. (optional, default to 10)
+     * @param  int|null $offset How many entities should be skipped. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldsV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createResultsV2Async($projectCode, $runId, $createResultsRequestV2, string $contentType = self::contentTypes['createResultsV2'][0])
+    public function getCustomFieldsV2Async($entity = null, $type = null, $limit = 10, $offset = 0, string $contentType = self::contentTypes['getCustomFieldsV2'][0])
     {
-        return $this->createResultsV2AsyncWithHttpInfo($projectCode, $runId, $createResultsRequestV2, $contentType)
+        return $this->getCustomFieldsV2AsyncWithHttpInfo($entity, $type, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -572,22 +536,23 @@ class ResultsApi
     }
 
     /**
-     * Operation createResultsV2AsyncWithHttpInfo
+     * Operation getCustomFieldsV2AsyncWithHttpInfo
      *
-     * Bulk create test run result
+     * Get all Custom Fields
      *
-     * @param  string $projectCode (required)
-     * @param  int $runId (required)
-     * @param  \Qase\APIClientV2\Model\CreateResultsRequestV2 $createResultsRequestV2 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultsV2'] to see the possible values for this operation
+     * @param  string|null $entity (optional)
+     * @param  string|null $type (optional)
+     * @param  int|null $limit A number of entities in result set. (optional, default to 10)
+     * @param  int|null $offset How many entities should be skipped. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldsV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createResultsV2AsyncWithHttpInfo($projectCode, $runId, $createResultsRequestV2, string $contentType = self::contentTypes['createResultsV2'][0])
+    public function getCustomFieldsV2AsyncWithHttpInfo($entity = null, $type = null, $limit = 10, $offset = 0, string $contentType = self::contentTypes['getCustomFieldsV2'][0])
     {
-        $returnType = '\Qase\APIClientV2\Model\ResultCreateBulkResponse';
-        $request = $this->createResultsV2Request($projectCode, $runId, $createResultsRequestV2, $contentType);
+        $returnType = '\Qase\APIClientV2\Model\CustomFieldListResponse';
+        $request = $this->getCustomFieldsV2Request($entity, $type, $limit, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -626,66 +591,82 @@ class ResultsApi
     }
 
     /**
-     * Create request for operation 'createResultsV2'
+     * Create request for operation 'getCustomFieldsV2'
      *
-     * @param  string $projectCode (required)
-     * @param  int $runId (required)
-     * @param  \Qase\APIClientV2\Model\CreateResultsRequestV2 $createResultsRequestV2 (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createResultsV2'] to see the possible values for this operation
+     * @param  string|null $entity (optional)
+     * @param  string|null $type (optional)
+     * @param  int|null $limit A number of entities in result set. (optional, default to 10)
+     * @param  int|null $offset How many entities should be skipped. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFieldsV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createResultsV2Request($projectCode, $runId, $createResultsRequestV2, string $contentType = self::contentTypes['createResultsV2'][0])
+    public function getCustomFieldsV2Request($entity = null, $type = null, $limit = 10, $offset = 0, string $contentType = self::contentTypes['getCustomFieldsV2'][0])
     {
 
-        // verify the required parameter 'projectCode' is set
-        if ($projectCode === null || (is_array($projectCode) && count($projectCode) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $projectCode when calling createResultsV2'
-            );
+
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CustomFieldsApi.getCustomFieldsV2, must be smaller than or equal to 100.');
         }
-
-        // verify the required parameter 'runId' is set
-        if ($runId === null || (is_array($runId) && count($runId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $runId when calling createResultsV2'
-            );
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CustomFieldsApi.getCustomFieldsV2, must be bigger than or equal to 1.');
         }
-
-        // verify the required parameter 'createResultsRequestV2' is set
-        if ($createResultsRequestV2 === null || (is_array($createResultsRequestV2) && count($createResultsRequestV2) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $createResultsRequestV2 when calling createResultsV2'
-            );
+        
+        if ($offset !== null && $offset > 100000) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CustomFieldsApi.getCustomFieldsV2, must be smaller than or equal to 100000.');
         }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CustomFieldsApi.getCustomFieldsV2, must be bigger than or equal to 0.');
+        }
+        
 
-
-        $resourcePath = '/{project_code}/run/{run_id}/results';
+        $resourcePath = '/custom_field';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $entity,
+            'entity', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $type,
+            'type', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
 
 
-        // path params
-        if ($projectCode !== null) {
-            $resourcePath = str_replace(
-                '{' . 'project_code' . '}',
-                ObjectSerializer::toPathValue($projectCode),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($runId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'run_id' . '}',
-                ObjectSerializer::toPathValue($runId),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -695,14 +676,7 @@ class ResultsApi
         );
 
         // for model (json/xml)
-        if (isset($createResultsRequestV2)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($createResultsRequestV2));
-            } else {
-                $httpBody = $createResultsRequestV2;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -746,7 +720,7 @@ class ResultsApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

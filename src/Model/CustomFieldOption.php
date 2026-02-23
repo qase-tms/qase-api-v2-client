@@ -1,6 +1,6 @@
 <?php
 /**
- * ResultCreateFields
+ * CustomFieldOption
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Qase\APIClientV2\ObjectSerializer;
 
 /**
- * ResultCreateFields Class Doc Comment
+ * CustomFieldOption Class Doc Comment
  *
  * @category Class
  * @package  Qase\APIClientV2
@@ -41,7 +41,7 @@ use \Qase\APIClientV2\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomFieldOption implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResultCreate_fields';
+    protected static $openAPIModelName = 'CustomFieldOption';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,18 +58,16 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'author' => 'string',
-        'description' => 'string',
-        'preconditions' => 'string',
-        'postconditions' => 'string',
-        'layer' => 'string',
-        'severity' => 'string',
-        'priority' => 'string',
-        'behavior' => 'string',
-        'type' => 'string',
-        'muted' => 'string',
-        'isFlaky' => 'string',
-        'executedBy' => 'string'
+        'id' => 'int',
+        'title' => 'string',
+        'slug' => 'string',
+        'color' => 'string',
+        'icon' => 'string',
+        'isDefault' => 'bool',
+        'readOnly' => 'bool',
+        'isActive' => 'bool',
+        'isInternal' => 'bool',
+        'behaviour' => 'int'
     ];
 
     /**
@@ -80,18 +78,16 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'author' => null,
-        'description' => null,
-        'preconditions' => null,
-        'postconditions' => null,
-        'layer' => null,
-        'severity' => null,
-        'priority' => null,
-        'behavior' => null,
-        'type' => null,
-        'muted' => null,
-        'isFlaky' => null,
-        'executedBy' => null
+        'id' => 'int64',
+        'title' => null,
+        'slug' => null,
+        'color' => null,
+        'icon' => null,
+        'isDefault' => null,
+        'readOnly' => null,
+        'isActive' => null,
+        'isInternal' => null,
+        'behaviour' => 'int32'
     ];
 
     /**
@@ -100,18 +96,16 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'author' => false,
-        'description' => false,
-        'preconditions' => false,
-        'postconditions' => false,
-        'layer' => false,
-        'severity' => false,
-        'priority' => false,
-        'behavior' => false,
-        'type' => false,
-        'muted' => false,
-        'isFlaky' => false,
-        'executedBy' => false
+        'id' => false,
+        'title' => true,
+        'slug' => true,
+        'color' => true,
+        'icon' => true,
+        'isDefault' => true,
+        'readOnly' => true,
+        'isActive' => true,
+        'isInternal' => true,
+        'behaviour' => true
     ];
 
     /**
@@ -200,18 +194,16 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'author' => 'author',
-        'description' => 'description',
-        'preconditions' => 'preconditions',
-        'postconditions' => 'postconditions',
-        'layer' => 'layer',
-        'severity' => 'severity',
-        'priority' => 'priority',
-        'behavior' => 'behavior',
-        'type' => 'type',
-        'muted' => 'muted',
-        'isFlaky' => 'is_flaky',
-        'executedBy' => 'executed_by'
+        'id' => 'id',
+        'title' => 'title',
+        'slug' => 'slug',
+        'color' => 'color',
+        'icon' => 'icon',
+        'isDefault' => 'is_default',
+        'readOnly' => 'read_only',
+        'isActive' => 'is_active',
+        'isInternal' => 'is_internal',
+        'behaviour' => 'behaviour'
     ];
 
     /**
@@ -220,18 +212,16 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'author' => 'setAuthor',
-        'description' => 'setDescription',
-        'preconditions' => 'setPreconditions',
-        'postconditions' => 'setPostconditions',
-        'layer' => 'setLayer',
-        'severity' => 'setSeverity',
-        'priority' => 'setPriority',
-        'behavior' => 'setBehavior',
-        'type' => 'setType',
-        'muted' => 'setMuted',
-        'isFlaky' => 'setIsFlaky',
-        'executedBy' => 'setExecutedBy'
+        'id' => 'setId',
+        'title' => 'setTitle',
+        'slug' => 'setSlug',
+        'color' => 'setColor',
+        'icon' => 'setIcon',
+        'isDefault' => 'setIsDefault',
+        'readOnly' => 'setReadOnly',
+        'isActive' => 'setIsActive',
+        'isInternal' => 'setIsInternal',
+        'behaviour' => 'setBehaviour'
     ];
 
     /**
@@ -240,18 +230,16 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'author' => 'getAuthor',
-        'description' => 'getDescription',
-        'preconditions' => 'getPreconditions',
-        'postconditions' => 'getPostconditions',
-        'layer' => 'getLayer',
-        'severity' => 'getSeverity',
-        'priority' => 'getPriority',
-        'behavior' => 'getBehavior',
-        'type' => 'getType',
-        'muted' => 'getMuted',
-        'isFlaky' => 'getIsFlaky',
-        'executedBy' => 'getExecutedBy'
+        'id' => 'getId',
+        'title' => 'getTitle',
+        'slug' => 'getSlug',
+        'color' => 'getColor',
+        'icon' => 'getIcon',
+        'isDefault' => 'getIsDefault',
+        'readOnly' => 'getReadOnly',
+        'isActive' => 'getIsActive',
+        'isInternal' => 'getIsInternal',
+        'behaviour' => 'getBehaviour'
     ];
 
     /**
@@ -311,18 +299,16 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('author', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('preconditions', $data ?? [], null);
-        $this->setIfExists('postconditions', $data ?? [], null);
-        $this->setIfExists('layer', $data ?? [], null);
-        $this->setIfExists('severity', $data ?? [], null);
-        $this->setIfExists('priority', $data ?? [], null);
-        $this->setIfExists('behavior', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('muted', $data ?? [], null);
-        $this->setIfExists('isFlaky', $data ?? [], null);
-        $this->setIfExists('executedBy', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('slug', $data ?? [], null);
+        $this->setIfExists('color', $data ?? [], null);
+        $this->setIfExists('icon', $data ?? [], null);
+        $this->setIfExists('isDefault', $data ?? [], null);
+        $this->setIfExists('readOnly', $data ?? [], null);
+        $this->setIfExists('isActive', $data ?? [], null);
+        $this->setIfExists('isInternal', $data ?? [], null);
+        $this->setIfExists('behaviour', $data ?? [], null);
     }
 
     /**
@@ -368,325 +354,334 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets author
+     * Gets id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getAuthor()
+    public function getId()
     {
-        return $this->container['author'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets author
+     * Sets id
      *
-     * @param string|null $author Author of the related test case (member id, name or email). If set and test case auto-creation is enabled, the author will be used to create the test case
+     * @param int|null $id id
      *
      * @return self
      */
-    public function setAuthor($author)
+    public function setId($id)
     {
-        if (is_null($author)) {
-            throw new \InvalidArgumentException('non-nullable author cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['author'] = $author;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets title
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getTitle()
     {
-        return $this->container['description'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets description
+     * Sets title
      *
-     * @param string|null $description description
+     * @param string|null $title title
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setTitle($title)
     {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['description'] = $description;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets preconditions
+     * Gets slug
      *
      * @return string|null
      */
-    public function getPreconditions()
+    public function getSlug()
     {
-        return $this->container['preconditions'];
+        return $this->container['slug'];
     }
 
     /**
-     * Sets preconditions
+     * Sets slug
      *
-     * @param string|null $preconditions preconditions
+     * @param string|null $slug slug
      *
      * @return self
      */
-    public function setPreconditions($preconditions)
+    public function setSlug($slug)
     {
-        if (is_null($preconditions)) {
-            throw new \InvalidArgumentException('non-nullable preconditions cannot be null');
+        if (is_null($slug)) {
+            array_push($this->openAPINullablesSetToNull, 'slug');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('slug', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['preconditions'] = $preconditions;
+        $this->container['slug'] = $slug;
 
         return $this;
     }
 
     /**
-     * Gets postconditions
+     * Gets color
      *
      * @return string|null
      */
-    public function getPostconditions()
+    public function getColor()
     {
-        return $this->container['postconditions'];
+        return $this->container['color'];
     }
 
     /**
-     * Sets postconditions
+     * Sets color
      *
-     * @param string|null $postconditions postconditions
+     * @param string|null $color color
      *
      * @return self
      */
-    public function setPostconditions($postconditions)
+    public function setColor($color)
     {
-        if (is_null($postconditions)) {
-            throw new \InvalidArgumentException('non-nullable postconditions cannot be null');
+        if (is_null($color)) {
+            array_push($this->openAPINullablesSetToNull, 'color');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('color', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['postconditions'] = $postconditions;
+        $this->container['color'] = $color;
 
         return $this;
     }
 
     /**
-     * Gets layer
+     * Gets icon
      *
      * @return string|null
      */
-    public function getLayer()
+    public function getIcon()
     {
-        return $this->container['layer'];
+        return $this->container['icon'];
     }
 
     /**
-     * Sets layer
+     * Sets icon
      *
-     * @param string|null $layer layer
+     * @param string|null $icon icon
      *
      * @return self
      */
-    public function setLayer($layer)
+    public function setIcon($icon)
     {
-        if (is_null($layer)) {
-            throw new \InvalidArgumentException('non-nullable layer cannot be null');
+        if (is_null($icon)) {
+            array_push($this->openAPINullablesSetToNull, 'icon');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('icon', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['layer'] = $layer;
+        $this->container['icon'] = $icon;
 
         return $this;
     }
 
     /**
-     * Gets severity
+     * Gets isDefault
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getSeverity()
+    public function getIsDefault()
     {
-        return $this->container['severity'];
+        return $this->container['isDefault'];
     }
 
     /**
-     * Sets severity
+     * Sets isDefault
      *
-     * @param string|null $severity severity
+     * @param bool|null $isDefault isDefault
      *
      * @return self
      */
-    public function setSeverity($severity)
+    public function setIsDefault($isDefault)
     {
-        if (is_null($severity)) {
-            throw new \InvalidArgumentException('non-nullable severity cannot be null');
+        if (is_null($isDefault)) {
+            array_push($this->openAPINullablesSetToNull, 'isDefault');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('isDefault', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['severity'] = $severity;
+        $this->container['isDefault'] = $isDefault;
 
         return $this;
     }
 
     /**
-     * Gets priority
+     * Gets readOnly
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getPriority()
+    public function getReadOnly()
     {
-        return $this->container['priority'];
+        return $this->container['readOnly'];
     }
 
     /**
-     * Sets priority
+     * Sets readOnly
      *
-     * @param string|null $priority priority
+     * @param bool|null $readOnly readOnly
      *
      * @return self
      */
-    public function setPriority($priority)
+    public function setReadOnly($readOnly)
     {
-        if (is_null($priority)) {
-            throw new \InvalidArgumentException('non-nullable priority cannot be null');
+        if (is_null($readOnly)) {
+            array_push($this->openAPINullablesSetToNull, 'readOnly');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('readOnly', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['priority'] = $priority;
+        $this->container['readOnly'] = $readOnly;
 
         return $this;
     }
 
     /**
-     * Gets behavior
+     * Gets isActive
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getBehavior()
+    public function getIsActive()
     {
-        return $this->container['behavior'];
+        return $this->container['isActive'];
     }
 
     /**
-     * Sets behavior
+     * Sets isActive
      *
-     * @param string|null $behavior behavior
+     * @param bool|null $isActive isActive
      *
      * @return self
      */
-    public function setBehavior($behavior)
+    public function setIsActive($isActive)
     {
-        if (is_null($behavior)) {
-            throw new \InvalidArgumentException('non-nullable behavior cannot be null');
+        if (is_null($isActive)) {
+            array_push($this->openAPINullablesSetToNull, 'isActive');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('isActive', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['behavior'] = $behavior;
+        $this->container['isActive'] = $isActive;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets isInternal
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getType()
+    public function getIsInternal()
     {
-        return $this->container['type'];
+        return $this->container['isInternal'];
     }
 
     /**
-     * Sets type
+     * Sets isInternal
      *
-     * @param string|null $type type
+     * @param bool|null $isInternal isInternal
      *
      * @return self
      */
-    public function setType($type)
+    public function setIsInternal($isInternal)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($isInternal)) {
+            array_push($this->openAPINullablesSetToNull, 'isInternal');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('isInternal', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['type'] = $type;
+        $this->container['isInternal'] = $isInternal;
 
         return $this;
     }
 
     /**
-     * Gets muted
+     * Gets behaviour
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getMuted()
+    public function getBehaviour()
     {
-        return $this->container['muted'];
+        return $this->container['behaviour'];
     }
 
     /**
-     * Sets muted
+     * Sets behaviour
      *
-     * @param string|null $muted muted
+     * @param int|null $behaviour behaviour
      *
      * @return self
      */
-    public function setMuted($muted)
+    public function setBehaviour($behaviour)
     {
-        if (is_null($muted)) {
-            throw new \InvalidArgumentException('non-nullable muted cannot be null');
+        if (is_null($behaviour)) {
+            array_push($this->openAPINullablesSetToNull, 'behaviour');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('behaviour', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['muted'] = $muted;
-
-        return $this;
-    }
-
-    /**
-     * Gets isFlaky
-     *
-     * @return string|null
-     */
-    public function getIsFlaky()
-    {
-        return $this->container['isFlaky'];
-    }
-
-    /**
-     * Sets isFlaky
-     *
-     * @param string|null $isFlaky isFlaky
-     *
-     * @return self
-     */
-    public function setIsFlaky($isFlaky)
-    {
-        if (is_null($isFlaky)) {
-            throw new \InvalidArgumentException('non-nullable isFlaky cannot be null');
-        }
-        $this->container['isFlaky'] = $isFlaky;
-
-        return $this;
-    }
-
-    /**
-     * Gets executedBy
-     *
-     * @return string|null
-     */
-    public function getExecutedBy()
-    {
-        return $this->container['executedBy'];
-    }
-
-    /**
-     * Sets executedBy
-     *
-     * @param string|null $executedBy User who executed the test (member id, name or email)
-     *
-     * @return self
-     */
-    public function setExecutedBy($executedBy)
-    {
-        if (is_null($executedBy)) {
-            throw new \InvalidArgumentException('non-nullable executedBy cannot be null');
-        }
-        $this->container['executedBy'] = $executedBy;
+        $this->container['behaviour'] = $behaviour;
 
         return $this;
     }

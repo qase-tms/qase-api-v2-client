@@ -1,5 +1,7 @@
 # Qase\APIClientV2\ResultsApi
 
+
+
 All URIs are relative to https://api.qase.io/v2, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -11,7 +13,7 @@ All URIs are relative to https://api.qase.io/v2, except if the operation defines
 ## `createResultV2()`
 
 ```php
-createResultV2($projectCode, $runId, $resultCreate)
+createResultV2($projectCode, $runId, $resultCreate): \Qase\APIClientV2\Model\ResultCreateResponse
 ```
 
 Create test run result
@@ -42,7 +44,8 @@ $runId = 56; // int
 $resultCreate = new \Qase\APIClientV2\Model\ResultCreate(); // \Qase\APIClientV2\Model\ResultCreate
 
 try {
-    $apiInstance->createResultV2($projectCode, $runId, $resultCreate);
+    $result = $apiInstance->createResultV2($projectCode, $runId, $resultCreate);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ResultsApi->createResultV2: ', $e->getMessage(), PHP_EOL;
 }
@@ -58,7 +61,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Qase\APIClientV2\Model\ResultCreateResponse**](../Model/ResultCreateResponse.md)
 
 ### Authorization
 
@@ -67,7 +70,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -76,7 +79,7 @@ void (empty response body)
 ## `createResultsV2()`
 
 ```php
-createResultsV2($projectCode, $runId, $createResultsRequestV2)
+createResultsV2($projectCode, $runId, $createResultsRequestV2): \Qase\APIClientV2\Model\ResultCreateBulkResponse
 ```
 
 Bulk create test run result
@@ -107,7 +110,8 @@ $runId = 56; // int
 $createResultsRequestV2 = new \Qase\APIClientV2\Model\CreateResultsRequestV2(); // \Qase\APIClientV2\Model\CreateResultsRequestV2
 
 try {
-    $apiInstance->createResultsV2($projectCode, $runId, $createResultsRequestV2);
+    $result = $apiInstance->createResultsV2($projectCode, $runId, $createResultsRequestV2);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ResultsApi->createResultsV2: ', $e->getMessage(), PHP_EOL;
 }
@@ -123,7 +127,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Qase\APIClientV2\Model\ResultCreateBulkResponse**](../Model/ResultCreateBulkResponse.md)
 
 ### Authorization
 
@@ -132,7 +136,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
