@@ -1,6 +1,6 @@
 <?php
 /**
- * ResultRelations
+ * BaseResponse
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Qase\APIClientV2\ObjectSerializer;
 
 /**
- * ResultRelations Class Doc Comment
+ * BaseResponse Class Doc Comment
  *
  * @category Class
  * @package  Qase\APIClientV2
@@ -41,7 +41,7 @@ use \Qase\APIClientV2\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
+class BaseResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResultRelations';
+    protected static $openAPIModelName = 'BaseResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'suite' => '\Qase\APIClientV2\Model\RelationSuite'
+        'status' => 'bool'
     ];
 
     /**
@@ -69,7 +69,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'suite' => null
+        'status' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'suite' => true
+        'status' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'suite' => 'suite'
+        'status' => 'status'
     ];
 
     /**
@@ -176,7 +176,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'suite' => 'setSuite'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -185,7 +185,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'suite' => 'getSuite'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -245,7 +245,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('suite', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -291,35 +291,28 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets suite
+     * Gets status
      *
-     * @return \Qase\APIClientV2\Model\RelationSuite|null
+     * @return bool|null
      */
-    public function getSuite()
+    public function getStatus()
     {
-        return $this->container['suite'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets suite
+     * Sets status
      *
-     * @param \Qase\APIClientV2\Model\RelationSuite|null $suite suite
+     * @param bool|null $status status
      *
      * @return self
      */
-    public function setSuite($suite)
+    public function setStatus($status)
     {
-        if (is_null($suite)) {
-            array_push($this->openAPINullablesSetToNull, 'suite');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('suite', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['suite'] = $suite;
+        $this->container['status'] = $status;
 
         return $this;
     }

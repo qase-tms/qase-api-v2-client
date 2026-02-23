@@ -1,6 +1,6 @@
 <?php
 /**
- * ResultRelations
+ * ResultCreateResponseAllOfResult
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Qase\APIClientV2\ObjectSerializer;
 
 /**
- * ResultRelations Class Doc Comment
+ * ResultCreateResponseAllOfResult Class Doc Comment
  *
  * @category Class
  * @package  Qase\APIClientV2
@@ -41,7 +41,7 @@ use \Qase\APIClientV2\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResultCreateResponseAllOfResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResultRelations';
+    protected static $openAPIModelName = 'ResultCreateResponse_allOf_result';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'suite' => '\Qase\APIClientV2\Model\RelationSuite'
+        'caseId' => 'int',
+        'hash' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'suite' => null
+        'caseId' => 'int64',
+        'hash' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'suite' => true
+        'caseId' => true,
+        'hash' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'suite' => 'suite'
+        'caseId' => 'case_id',
+        'hash' => 'hash'
     ];
 
     /**
@@ -176,7 +180,8 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'suite' => 'setSuite'
+        'caseId' => 'setCaseId',
+        'hash' => 'setHash'
     ];
 
     /**
@@ -185,7 +190,8 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'suite' => 'getSuite'
+        'caseId' => 'getCaseId',
+        'hash' => 'getHash'
     ];
 
     /**
@@ -245,7 +251,8 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('suite', $data ?? [], null);
+        $this->setIfExists('caseId', $data ?? [], null);
+        $this->setIfExists('hash', $data ?? [], null);
     }
 
     /**
@@ -291,35 +298,62 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets suite
+     * Gets caseId
      *
-     * @return \Qase\APIClientV2\Model\RelationSuite|null
+     * @return int|null
      */
-    public function getSuite()
+    public function getCaseId()
     {
-        return $this->container['suite'];
+        return $this->container['caseId'];
     }
 
     /**
-     * Sets suite
+     * Sets caseId
      *
-     * @param \Qase\APIClientV2\Model\RelationSuite|null $suite suite
+     * @param int|null $caseId caseId
      *
      * @return self
      */
-    public function setSuite($suite)
+    public function setCaseId($caseId)
     {
-        if (is_null($suite)) {
-            array_push($this->openAPINullablesSetToNull, 'suite');
+        if (is_null($caseId)) {
+            array_push($this->openAPINullablesSetToNull, 'caseId');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('suite', $nullablesSetToNull);
+            $index = array_search('caseId', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['suite'] = $suite;
+        $this->container['caseId'] = $caseId;
+
+        return $this;
+    }
+
+    /**
+     * Gets hash
+     *
+     * @return string|null
+     */
+    public function getHash()
+    {
+        return $this->container['hash'];
+    }
+
+    /**
+     * Sets hash
+     *
+     * @param string|null $hash hash
+     *
+     * @return self
+     */
+    public function setHash($hash)
+    {
+        if (is_null($hash)) {
+            throw new \InvalidArgumentException('non-nullable hash cannot be null');
+        }
+        $this->container['hash'] = $hash;
 
         return $this;
     }

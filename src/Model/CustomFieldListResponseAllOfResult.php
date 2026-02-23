@@ -1,6 +1,6 @@
 <?php
 /**
- * ResultRelations
+ * CustomFieldListResponseAllOfResult
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Qase\APIClientV2\ObjectSerializer;
 
 /**
- * ResultRelations Class Doc Comment
+ * CustomFieldListResponseAllOfResult Class Doc Comment
  *
  * @category Class
  * @package  Qase\APIClientV2
@@ -41,7 +41,7 @@ use \Qase\APIClientV2\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomFieldListResponseAllOfResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResultRelations';
+    protected static $openAPIModelName = 'CustomFieldListResponse_allOf_result';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,10 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'suite' => '\Qase\APIClientV2\Model\RelationSuite'
+        'total' => 'int',
+        'filtered' => 'int',
+        'count' => 'int',
+        'entities' => '\Qase\APIClientV2\Model\CustomField[]'
     ];
 
     /**
@@ -69,7 +72,10 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'suite' => null
+        'total' => null,
+        'filtered' => null,
+        'count' => null,
+        'entities' => null
     ];
 
     /**
@@ -78,7 +84,10 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'suite' => true
+        'total' => false,
+        'filtered' => false,
+        'count' => false,
+        'entities' => false
     ];
 
     /**
@@ -167,7 +176,10 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'suite' => 'suite'
+        'total' => 'total',
+        'filtered' => 'filtered',
+        'count' => 'count',
+        'entities' => 'entities'
     ];
 
     /**
@@ -176,7 +188,10 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'suite' => 'setSuite'
+        'total' => 'setTotal',
+        'filtered' => 'setFiltered',
+        'count' => 'setCount',
+        'entities' => 'setEntities'
     ];
 
     /**
@@ -185,7 +200,10 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'suite' => 'getSuite'
+        'total' => 'getTotal',
+        'filtered' => 'getFiltered',
+        'count' => 'getCount',
+        'entities' => 'getEntities'
     ];
 
     /**
@@ -245,7 +263,10 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('suite', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('filtered', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('entities', $data ?? [], null);
     }
 
     /**
@@ -291,35 +312,109 @@ class ResultRelations implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets suite
+     * Gets total
      *
-     * @return \Qase\APIClientV2\Model\RelationSuite|null
+     * @return int|null
      */
-    public function getSuite()
+    public function getTotal()
     {
-        return $this->container['suite'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets suite
+     * Sets total
      *
-     * @param \Qase\APIClientV2\Model\RelationSuite|null $suite suite
+     * @param int|null $total total
      *
      * @return self
      */
-    public function setSuite($suite)
+    public function setTotal($total)
     {
-        if (is_null($suite)) {
-            array_push($this->openAPINullablesSetToNull, 'suite');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('suite', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
         }
-        $this->container['suite'] = $suite;
+        $this->container['total'] = $total;
+
+        return $this;
+    }
+
+    /**
+     * Gets filtered
+     *
+     * @return int|null
+     */
+    public function getFiltered()
+    {
+        return $this->container['filtered'];
+    }
+
+    /**
+     * Sets filtered
+     *
+     * @param int|null $filtered filtered
+     *
+     * @return self
+     */
+    public function setFiltered($filtered)
+    {
+        if (is_null($filtered)) {
+            throw new \InvalidArgumentException('non-nullable filtered cannot be null');
+        }
+        $this->container['filtered'] = $filtered;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return int|null
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param int|null $count count
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        }
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets entities
+     *
+     * @return \Qase\APIClientV2\Model\CustomField[]|null
+     */
+    public function getEntities()
+    {
+        return $this->container['entities'];
+    }
+
+    /**
+     * Sets entities
+     *
+     * @param \Qase\APIClientV2\Model\CustomField[]|null $entities entities
+     *
+     * @return self
+     */
+    public function setEntities($entities)
+    {
+        if (is_null($entities)) {
+            throw new \InvalidArgumentException('non-nullable entities cannot be null');
+        }
+        $this->container['entities'] = $entities;
 
         return $this;
     }
