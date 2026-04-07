@@ -97,11 +97,11 @@ class Configuration
     protected $host = 'https://api.qase.io/v2';
 
     /**
-     * User agent of the HTTP request
+     * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
      *
      * @var string
      */
-    protected $userAgent = '';
+    protected $userAgent = 'OpenAPI-Generator/1.0.0/PHP';
 
     /**
      * Debug switch (default set to false)
@@ -144,28 +144,6 @@ class Configuration
     public function __construct()
     {
         $this->tempFolderPath = sys_get_temp_dir();
-        $this->userAgent = 'qase-api-client-php/' . self::getPackageVersion();
-    }
-
-    /**
-     * Gets the package version from Composer metadata
-     *
-     * @return string Package version or 'unknown' if not available
-     */
-    public static function getPackageVersion(): string
-    {
-        try {
-            if (class_exists('\Composer\InstalledVersions')) {
-                $version = \Composer\InstalledVersions::getPrettyVersion('qase/qase-api-v2-client');
-                if ($version !== null) {
-                    return $version;
-                }
-            }
-        } catch (\Exception $e) {
-            // Fallback below
-        }
-
-        return 'unknown';
     }
 
     /**
