@@ -69,6 +69,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'string',
         'muted' => 'string',
         'isFlaky' => 'string',
+        'tags' => 'string',
         'executedBy' => 'string'
     ];
 
@@ -91,6 +92,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => null,
         'muted' => null,
         'isFlaky' => null,
+        'tags' => null,
         'executedBy' => null
     ];
 
@@ -111,6 +113,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => false,
         'muted' => false,
         'isFlaky' => false,
+        'tags' => false,
         'executedBy' => false
     ];
 
@@ -211,6 +214,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'type',
         'muted' => 'muted',
         'isFlaky' => 'is_flaky',
+        'tags' => 'tags',
         'executedBy' => 'executed_by'
     ];
 
@@ -231,6 +235,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'setType',
         'muted' => 'setMuted',
         'isFlaky' => 'setIsFlaky',
+        'tags' => 'setTags',
         'executedBy' => 'setExecutedBy'
     ];
 
@@ -251,6 +256,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         'type' => 'getType',
         'muted' => 'getMuted',
         'isFlaky' => 'getIsFlaky',
+        'tags' => 'getTags',
         'executedBy' => 'getExecutedBy'
     ];
 
@@ -322,6 +328,7 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('muted', $data ?? [], null);
         $this->setIfExists('isFlaky', $data ?? [], null);
+        $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('executedBy', $data ?? [], null);
     }
 
@@ -660,6 +667,33 @@ class ResultCreateFields implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable isFlaky cannot be null');
         }
         $this->container['isFlaky'] = $isFlaky;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string|null
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string|null $tags Comma-separated list of tag titles to assign to the test case
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+        if (is_null($tags)) {
+            throw new \InvalidArgumentException('non-nullable tags cannot be null');
+        }
+        $this->container['tags'] = $tags;
 
         return $this;
     }
