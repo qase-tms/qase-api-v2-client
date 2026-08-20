@@ -1,0 +1,22 @@
+composer.json
+  s_5fb4a69576fed8::t_49914692dce686 25-26
+  s_5fb4a69576fed8::t_1a7e18992efa91 41
+composer.lock
+  s_5fb4a69576fed8::t_7f328726f50628 7,11,15,19-20,25-26,29-30,38-39,41,119,135,139,143,147-148,152-153,157,203,219,223,227,231-232,239-241,249-251,322,338,610-693
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "78853eb08772017b959a6895e37ef59ecbf5e09c",
+  "prompts": {},
+  "sessions": {
+    "s_5fb4a69576fed8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "964a7ade-eed1-4dbd-8428-63cb4aedc582",
+        "model": "claude-opus-5"
+      },
+      "human_author": null
+    }
+  }
+}
