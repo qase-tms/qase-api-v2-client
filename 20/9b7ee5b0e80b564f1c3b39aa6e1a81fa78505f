@@ -1,0 +1,25 @@
+composer.json
+  s_e03abde9710ca8::t_22ce7c07a5e8ad 41
+composer.lock
+  s_e03abde9710ca8::t_913585b2d3d349 7
+docs/Model/ResultExecution.md
+  s_e03abde9710ca8::t_7acc179ad37f67 12
+src/Model/ResultExecution.php
+  s_e03abde9710ca8::t_2d77845e5d9240 66,83,98,193,208,223,289,501-534
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "209b7ee5b0e80b564f1c3b39aa6e1a81fa78505f",
+  "prompts": {},
+  "sessions": {
+    "s_e03abde9710ca8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f9577e82-6d1c-46be-8523-385d83fc66fe",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Dmitrii Gridnev <dgridnev@qase.io>"
+    }
+  }
+}
