@@ -63,6 +63,7 @@ class ResultExecution implements ModelInterface, ArrayAccess, \JsonSerializable
         'endTime' => 'float',
         'duration' => 'int',
         'stacktrace' => 'string',
+        'errorContext' => 'string',
         'thread' => 'string'
     ];
 
@@ -79,6 +80,7 @@ class ResultExecution implements ModelInterface, ArrayAccess, \JsonSerializable
         'endTime' => 'double',
         'duration' => 'int64',
         'stacktrace' => null,
+        'errorContext' => null,
         'thread' => null
     ];
 
@@ -93,6 +95,7 @@ class ResultExecution implements ModelInterface, ArrayAccess, \JsonSerializable
         'endTime' => true,
         'duration' => true,
         'stacktrace' => true,
+        'errorContext' => true,
         'thread' => true
     ];
 
@@ -187,6 +190,7 @@ class ResultExecution implements ModelInterface, ArrayAccess, \JsonSerializable
         'endTime' => 'end_time',
         'duration' => 'duration',
         'stacktrace' => 'stacktrace',
+        'errorContext' => 'error_context',
         'thread' => 'thread'
     ];
 
@@ -201,6 +205,7 @@ class ResultExecution implements ModelInterface, ArrayAccess, \JsonSerializable
         'endTime' => 'setEndTime',
         'duration' => 'setDuration',
         'stacktrace' => 'setStacktrace',
+        'errorContext' => 'setErrorContext',
         'thread' => 'setThread'
     ];
 
@@ -215,6 +220,7 @@ class ResultExecution implements ModelInterface, ArrayAccess, \JsonSerializable
         'endTime' => 'getEndTime',
         'duration' => 'getDuration',
         'stacktrace' => 'getStacktrace',
+        'errorContext' => 'getErrorContext',
         'thread' => 'getThread'
     ];
 
@@ -280,6 +286,7 @@ class ResultExecution implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('endTime', $data ?? [], null);
         $this->setIfExists('duration', $data ?? [], null);
         $this->setIfExists('stacktrace', $data ?? [], null);
+        $this->setIfExists('errorContext', $data ?? [], null);
         $this->setIfExists('thread', $data ?? [], null);
     }
 
@@ -487,6 +494,40 @@ class ResultExecution implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['stacktrace'] = $stacktrace;
+
+        return $this;
+    }
+
+    /**
+     * Gets errorContext
+     *
+     * @return string|null
+     */
+    public function getErrorContext()
+    {
+        return $this->container['errorContext'];
+    }
+
+    /**
+     * Sets errorContext
+     *
+     * @param string|null $errorContext Free-form failure context captured by the reporter. For Playwright this is the content of error-context.md (test info, error details, page snapshot), so it may include rendered page content. Stored verbatim so it can be copied as raw text. Values longer than 262144 characters are silently truncated by Qase and the request still succeeds. Write-only — not returned by the result read endpoints.
+     *
+     * @return self
+     */
+    public function setErrorContext($errorContext)
+    {
+        if (is_null($errorContext)) {
+            array_push($this->openAPINullablesSetToNull, 'errorContext');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errorContext', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['errorContext'] = $errorContext;
 
         return $this;
     }
